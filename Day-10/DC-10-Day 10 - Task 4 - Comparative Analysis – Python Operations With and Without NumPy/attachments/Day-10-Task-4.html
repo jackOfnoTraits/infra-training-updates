@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/apple-touch-icon.png" />
+    <link rel="manifest" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>Day-10-Task-4.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>Day-10-Task-4</title>
+    <script type="module" crossorigin src="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/index-s-M1OXjs.js"></script>
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-DVplv7_D.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/compiler-runtime-BrajqUja.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useEvent-Dfcbgjhg.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-dom-_LrxgvjW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/schemas-Dv42wLFq.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useEventListener-D9cftcHj.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-VPSq73n8.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/utils-B4K466FK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/session-DqoWmb7X.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-DX8Y2WbJ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/fullscreen-B9tHcfpV.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-iaThVDkA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/menu-items-BrwnTgyK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/use-restore-focus-BxEGwIbk.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/createLucideIcon-DfJ2oMlA.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/circle-DXf-VWZG.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/button-COI-NGrx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/check-BQNapYaf.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/I18nProvider-Cg2I_s1_.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useNumberFormatter-D7O_26UI.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/select-DTBn5eTb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/toast-BGzLGnvw.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tooltip-C9TuY18o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/paths-bkIFVj8h.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useLifecycle-Mq4gc5kS.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/toDate-DOj9Q6uC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/database-zap-B_PMVg8T.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/alert-dialog-BaPGzeOK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/numbers-Mk3-CcoU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDebounce-B_ccBZTp.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/input-BoBxR50a.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/use-toast-Wu434mLr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/requests-lt0JK8Jt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/write-secret-modal-DzKAInL2.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/plus-C5silF6g.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/trash-2-DcgaW8fn.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/preload-helper-uBIymjUX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-Cny7_yZb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DBMV4gqt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/capabilities-BJvf-MD4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/createReducer-DgRODTW6.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-qhAY4L2r.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/strings-B2vv-ENv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-BOfh4hMd.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/badge-crT3E0Rm.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DtH-7lot.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-BmExfiwX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-1tmpVXyz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-LSsCJjA3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dist-DusFODSa.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/stex-Dc5bKD4z.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useTheme-COhSHkCj.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useAsyncData-C7aJJz0Y.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/purify.es--06brOip.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cells-BRkCaSsh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/coerce-CpE6kUdX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_hasPath-BmRQipI0.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/hasIn-yw4sIeJR.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/_baseSet-Bpdo9AvU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pick-DKIID_Mo.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-BAJYRhmO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-C3oDoyFe.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/LazyAnyLanguageCodeMirror-CKcCbG2G.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-D8O_CYCG.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chunk-YOKDWASO-BIpRENEC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-renderer-BG3sp2rs.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-Djr5m5ac.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/copy-icon-BIiRXh_3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useRunCells-B2vUhREg.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/RenderHTML-BbOqmHy3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/blob-D5nfNHOo.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/kbd-pdKBv96t.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useInstallPackage-iX1eufdl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/errors-DCrsa1nH.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/api-BeC_VSGv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/share-BZW3tzEX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/events-CbeVJ6OD.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-_Qai_QyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pair-CaQyK6En.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/ErrorBoundary-Gl5nCA8C.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/config-BOKzA3tF.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chevron-right-eAtVhbNZ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dropdown-menu-C1rnl-0o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/html-to-image-DK9Zl1lU.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/download-DCJXy66H.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/switch-CTaiAjrz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tabs-BuQlZFbt.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/table-DG7Ap4H4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/eye-off-CxVozGAC.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/refresh-cw-Qw1f8Jhy.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tree-actions-GM5E_bUs.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/ellipsis-63DyBLHQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/external-link-UrX9KO36.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/spinner-DyNE-o8o.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/message-circle-C3rKm8_a.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/hat-glasses-C8RhSVii.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/package-GSoSTiIK.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/datasource-Cq6x_5ML.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/alert-DTaqCu_d.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/state-XsPO8hNi.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cell-link-LSth_8hT.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/MarimoErrorOutput-D60XkCny.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDateFormatter-DA-62E-Y.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/en-US-Buu61juQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/isValid-q_Ad80ug.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/dates-BbFQ2oE4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/tooltip-mT3CGest.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-icons.esm-D6tfmvq8.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/extends-CvVTau-c.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/objectWithoutPropertiesLoose-Do6ywDBO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useIframeCapabilities-CwTkczVN.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/error-banner-Cd69vvyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/utils-CaQYvazl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/formats-yZ06h1Pl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/table-vrvqpuKJ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/react-resizable-panels.browser.esm-Dbe0MrFr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/JsonOutput-D6HIIsCb.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/chart-no-axes-column-C4_v6fQW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/square-function-_W_Lo0P4.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/spec-BfSBcO5B.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/semaphore-BjoL5P0h.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/fileToBase64-BgBraYAr.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useBoolean-BDD6_xQQ.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/code-xml-SQaZqvcO.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-headphone-Dl35U6h3.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-BPBVl9pl.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/image-wZvTj8WY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/file-icons-CdJgUy-I.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/globe-UdPdIbF7.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/esm-CI_o7NhW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useAddCell-GR7eEQrT.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/readonly-python-code-DCSMIsTX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/data-grid-types-DgHVN_Zz.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/glide-utils-CIrAxdjv.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/column-preview-Cm2D6vyX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/square-BPmgQFnh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/triangle-alert-DmIqR8sY.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/prop-types-Djf4O40e.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/es-Cqst59WX.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/package-data-dv4FBHxR.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-export-DzhB1FrN.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/renderShortcut-BkVJQ_Zh.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/bundle.esm-D3tw5rqW.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/icons-CiZ_8zS-.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/useDeepCompareMemoize-DFIVN9dn.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/pathUtils-DPmlLd-r.js">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/floating-outline-XD9FAV-f.js">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/markdown-renderer-DjIHoF9Z.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/JsonOutput-B0GmlMnR.css">
+    <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/npm/@marimo-team/frontend@0.25.2/dist/assets/index-Bcdzex-3.css">
+  
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_STATIC__", {
+        value: Object.freeze({
+            files: Object.freeze({}),
+            modelNotifications: Object.freeze([]),
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.25.2\"\napp = marimo.App(width=\"medium\")\n\n\n@app.cell\ndef _():\n    import timeit\n    import numpy as np\n\n    return np, timeit\n\n\n@app.cell\ndef _(timeit):\n    def benchmark(\n        func1,\n        func2,\n        number=10_000,\n        repeat=5,\n        name1=\"Generic Python\",\n        name2=\"NumPy\",\n    ):\n        times1 = timeit.repeat(func1, number=number, repeat=repeat)\n        times2 = timeit.repeat(func2, number=number, repeat=repeat)\n\n        best1 = min(times1)\n        best2 = min(times2)\n\n        print(f\"\\n{'Benchmark Results':^45}\")\n        print(\"-\" * 45)\n\n        for name, best in [(name1, best1), (name2, best2)]:\n            print(f\"{name}:\")\n            print(f\"  Best run:      {best:.6f} seconds\")\n            print(f\"  Time per call: {best / number:.10f} seconds\")\n\n        print(\"\\nComparison:\")\n        if best1 \u003C best2:\n            print(f\"{name1} is {best2 / best1:.2f}x faster\")\n        elif best2 \u003C best1:\n            print(f\"{name2} is {best1 / best2:.2f}x faster\")\n        else:\n            print(\"Both have equal measured execution times.\")\n\n        return {name1: times1, name2: times2}\n\n    return (benchmark,)\n\n\n@app.cell\ndef _(benchmark, np):\n    # One-dimensional array\n\n    arr = [10, 20, 30, 40, 50]\n    np_arr = np.array(arr)\n\n    def python_1d():\n        [x + 10 for x in arr]\n\n    def numpy_1d():\n        np_arr + 10\n\n    python_1d(); numpy_1d()\n\n    print(\"Generic Python result:\", [x + 10 for x in arr])\n    print(\"NumPy result:\", np_arr + 10)\n\n    benchmark(python_1d, numpy_1d, name1=\"Python 1D\", name2=\"NumPy 1D\")\n    return\n\n\n@app.cell\ndef _(benchmark, np):\n    # Two-dimensional array\n\n    arr_2d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n    np_arr_2d = np.array(arr_2d)\n\n    def python_2d():\n        [[x + 10 for x in row] for row in arr_2d]\n\n    def numpy_2d():\n        np_arr_2d + 10\n\n    print(\"Generic Python result:\", [[x + 10 for x in row] for row in arr_2d])\n    print(\"NumPy result:\\n\", np_arr_2d + 10)\n\n    benchmark(python_2d, numpy_2d, name1=\"Python 2D\", name2=\"NumPy 2D\")\n    return\n\n\n@app.cell\ndef _(benchmark, np):\n    # Three-dimensional array\n\n    arr_3d = [[[11, 12, 7], [9, 5, 6]], [[7, 8, 9], [10, 4, 3]]]\n    np_arr_3d = np.array(arr_3d)\n\n    def python_3d():\n        [[[x + 10 for x in row] for row in block] for block in arr_3d]\n\n    def numpy_3d():\n        np_arr_3d + 10\n\n    print(\"Generic Python result:\", [[[x + 10 for x in row] for row in block] for block in arr_3d])\n    print(\"NumPy result:\\n\", np_arr_3d + 10)\n\n    benchmark(python_3d, numpy_3d, name1=\"Python 3D\", name2=\"NumPy 3D\")\n    return arr_3d, np_arr_3d\n\n\n@app.cell\ndef _(arr_3d, benchmark, np_arr_3d):\n    # Computing sum\n\n    def python_3d_sum():\n        sum([num for matrix in arr_3d for row in matrix for num in row])\n\n    def numpy_3d_sum():\n        np_arr_3d.sum()\n\n    print(\"Generic Python result:\", sum([num for matrix in arr_3d for row in matrix for num in row]))\n    print(\"NumPy result:\\n\", np_arr_3d.sum())\n\n    benchmark(python_3d_sum, numpy_3d_sum, name1=\"Python 3D\", name2=\"NumPy 3D\")\n    return\n\n\n@app.cell\ndef _(arr_3d, benchmark, np_arr_3d):\n    # Finding min\n\n    def python_3d_min():\n        min([num for matrix in arr_3d for row in matrix for num in row])\n\n    def numpy_3d_min():\n        np_arr_3d.min()\n\n    print(\"Generic Python result:\", min([num for matrix in arr_3d for row in matrix for num in row]))\n    print(\"NumPy result:\\n\", np_arr_3d.min())\n\n    benchmark(python_3d_min, numpy_3d_min, name1=\"Python 3D\", name2=\"NumPy 3D\")\n    return\n\n\n@app.cell\ndef _(arr_3d, benchmark, np_arr_3d):\n    # Finding max\n\n    def python_3d_max():\n        max([num for matrix in arr_3d for row in matrix for num in row])\n\n    def numpy_3d_max():\n        np_arr_3d.max()\n\n    print(\"Generic Python result:\", max([num for matrix in arr_3d for row in matrix for num in row]))\n    print(\"NumPy result:\\n\", np_arr_3d.max())\n\n    benchmark(python_3d_max, numpy_3d_max, name1=\"Python 3D\", name2=\"NumPy 3D\")\n    return\n\n\n@app.cell\ndef _(arr_3d, benchmark, np_arr_3d):\n    # Finding mean\n\n    def python_3d_mean():\n        numbers = [\n            num \n            for matrix in arr_3d \n            for row in matrix \n            for num in row\n        ]\n        sum(numbers) / len(numbers)\n\n    def numpy_3d_mean():\n        np_arr_3d.mean()\n\n    numbers = [num for matrix in arr_3d for row in matrix for num in row]\n    print(\"Generic Python result:\", sum(numbers) / len(numbers))\n    print(\"NumPy result:\\n\", np_arr_3d.mean())\n\n    benchmark(python_3d_mean, numpy_3d_mean, name1=\"Python 3D\", name2=\"NumPy 3D\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "Day-10-Task-4.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "read",
+            "version": "0.25.2",
+            "serverToken": "static",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "after_delay", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "layout": null,
+            "view": {"showAppCode": true},
+            "notebook": {"cells": [{"code": "import timeit\nimport numpy as np", "code_hash": "5f6a87ecdcc8398c375e8732bf6f53a2", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "Hbol", "name": "_"}, {"code": "def benchmark(\n    func1,\n    func2,\n    number=10_000,\n    repeat=5,\n    name1=\"Generic Python\",\n    name2=\"NumPy\",\n):\n    times1 = timeit.repeat(func1, number=number, repeat=repeat)\n    times2 = timeit.repeat(func2, number=number, repeat=repeat)\n\n    best1 = min(times1)\n    best2 = min(times2)\n\n    print(f\"\\n{'Benchmark Results':^45}\")\n    print(\"-\" * 45)\n\n    for name, best in [(name1, best1), (name2, best2)]:\n        print(f\"{name}:\")\n        print(f\"  Best run:      {best:.6f} seconds\")\n        print(f\"  Time per call: {best / number:.10f} seconds\")\n\n    print(\"\\nComparison:\")\n    if best1 \u003C best2:\n        print(f\"{name1} is {best2 / best1:.2f}x faster\")\n    elif best2 \u003C best1:\n        print(f\"{name2} is {best1 / best2:.2f}x faster\")\n    else:\n        print(\"Both have equal measured execution times.\")\n\n    return {name1: times1, name2: times2}", "code_hash": "fa0bed8dcb6f067627a099c2bf0972dc", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "MJUe", "name": "_"}, {"code": "# One-dimensional array\n\narr = [10, 20, 30, 40, 50]\nnp_arr = np.array(arr)\n\ndef python_1d():\n    [x + 10 for x in arr]\n\ndef numpy_1d():\n    np_arr + 10\n\npython_1d(); numpy_1d()\n\nprint(\"Generic Python result:\", [x + 10 for x in arr])\nprint(\"NumPy result:\", np_arr + 10)\n\nbenchmark(python_1d, numpy_1d, name1=\"Python 1D\", name2=\"NumPy 1D\")", "code_hash": "d50a9d5815d887b7f5d0b0bcdf79cfaa", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "vblA", "name": "_"}, {"code": "# Two-dimensional array\n\narr_2d = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nnp_arr_2d = np.array(arr_2d)\n\ndef python_2d():\n    [[x + 10 for x in row] for row in arr_2d]\n\ndef numpy_2d():\n    np_arr_2d + 10\n\nprint(\"Generic Python result:\", [[x + 10 for x in row] for row in arr_2d])\nprint(\"NumPy result:\\n\", np_arr_2d + 10)\n\nbenchmark(python_2d, numpy_2d, name1=\"Python 2D\", name2=\"NumPy 2D\")", "code_hash": "3a0611202683a9664a482170fcba2244", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "bkHC", "name": "_"}, {"code": "# Three-dimensional array\n\narr_3d = [[[11, 12, 7], [9, 5, 6]], [[7, 8, 9], [10, 4, 3]]]\nnp_arr_3d = np.array(arr_3d)\n\ndef python_3d():\n    [[[x + 10 for x in row] for row in block] for block in arr_3d]\n\ndef numpy_3d():\n    np_arr_3d + 10\n\nprint(\"Generic Python result:\", [[[x + 10 for x in row] for row in block] for block in arr_3d])\nprint(\"NumPy result:\\n\", np_arr_3d + 10)\n\nbenchmark(python_3d, numpy_3d, name1=\"Python 3D\", name2=\"NumPy 3D\")", "code_hash": "8791d71270022c2a9be1af970bf5cbe9", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "lEQa", "name": "_"}, {"code": "# Computing sum\n\ndef python_3d_sum():\n    sum([num for matrix in arr_3d for row in matrix for num in row])\n\ndef numpy_3d_sum():\n    np_arr_3d.sum()\n\nprint(\"Generic Python result:\", sum([num for matrix in arr_3d for row in matrix for num in row]))\nprint(\"NumPy result:\\n\", np_arr_3d.sum())\n\nbenchmark(python_3d_sum, numpy_3d_sum, name1=\"Python 3D\", name2=\"NumPy 3D\")", "code_hash": "1c88c1c36487755ad8ddd1fe75c75676", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "PKri", "name": "_"}, {"code": "# Finding min\n\ndef python_3d_min():\n    min([num for matrix in arr_3d for row in matrix for num in row])\n\ndef numpy_3d_min():\n    np_arr_3d.min()\n\nprint(\"Generic Python result:\", min([num for matrix in arr_3d for row in matrix for num in row]))\nprint(\"NumPy result:\\n\", np_arr_3d.min())\n\nbenchmark(python_3d_min, numpy_3d_min, name1=\"Python 3D\", name2=\"NumPy 3D\")", "code_hash": "f54680ae08ffaf423541bdfc24b91dbf", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "Xref", "name": "_"}, {"code": "# Finding max\n\ndef python_3d_max():\n    max([num for matrix in arr_3d for row in matrix for num in row])\n\ndef numpy_3d_max():\n    np_arr_3d.max()\n\nprint(\"Generic Python result:\", max([num for matrix in arr_3d for row in matrix for num in row]))\nprint(\"NumPy result:\\n\", np_arr_3d.max())\n\nbenchmark(python_3d_max, numpy_3d_max, name1=\"Python 3D\", name2=\"NumPy 3D\")", "code_hash": "b58206d2e41b9dfe0e99f36cde76cccb", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "SFPL", "name": "_"}, {"code": "# Finding mean\n\ndef python_3d_mean():\n    numbers = [\n        num \n        for matrix in arr_3d \n        for row in matrix \n        for num in row\n    ]\n    sum(numbers) / len(numbers)\n\ndef numpy_3d_mean():\n    np_arr_3d.mean()\n\nnumbers = [num for matrix in arr_3d for row in matrix for num in row]\nprint(\"Generic Python result:\", sum(numbers) / len(numbers))\nprint(\"NumPy result:\\n\", np_arr_3d.mean())\n\nbenchmark(python_3d_mean, numpy_3d_mean, name1=\"Python 3D\", name2=\"NumPy 3D\")", "code_hash": "62ee90b8c4919583afe6631be8545dde", "config": {"column": null, "disabled": false, "expand_output": false, "hide_code": false}, "id": "BYtC", "name": "_"}], "metadata": {"marimo_version": "0.25.2"}, "version": "1"},
+            "session": {"cells": [{"code_hash": "5f6a87ecdcc8398c375e8732bf6f53a2", "console": [], "id": "Hbol", "outputs": [{"data": {"text/plain": ""}, "type": "data"}]}, {"code_hash": "fa0bed8dcb6f067627a099c2bf0972dc", "console": [], "id": "MJUe", "outputs": [{"data": {"text/plain": ""}, "type": "data"}]}, {"code_hash": "d50a9d5815d887b7f5d0b0bcdf79cfaa", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: [20, 30, 40, 50, 60]\nNumPy result: [20 30 40 50 60]\n\n              Benchmark Results              \n---------------------------------------------\nPython 1D:\n  Best run:      0.001593 seconds\n  Time per call: 0.0000001593 seconds\nNumPy 1D:\n  Best run:      0.004990 seconds\n  Time per call: 0.0000004990 seconds\n\nComparison:\nPython 1D is 3.13x faster\n", "type": "stream"}], "id": "vblA", "outputs": [{"data": {"application/json": "{\"Python 1D\": [\"text/plain+float:0.0016245830338448286\", \"text/plain+float:0.0015929999644868076\", \"text/plain+float:0.0016132909804582596\", \"text/plain+float:0.00164358300389722\", \"text/plain+float:0.001607749960385263\"], \"NumPy 1D\": [\"text/plain+float:0.005057666974607855\", \"text/plain+float:0.0050941670197062194\", \"text/plain+float:0.004989624954760075\", \"text/plain+float:0.005085417011287063\", \"text/plain+float:0.005204041954129934\"]}"}, "type": "data"}]}, {"code_hash": "3a0611202683a9664a482170fcba2244", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: [[11, 12, 13], [14, 15, 16], [17, 18, 19]]\nNumPy result:\n [[11 12 13]\n [14 15 16]\n [17 18 19]]\n\n              Benchmark Results              \n---------------------------------------------\nPython 2D:\n  Best run:      0.003953 seconds\n  Time per call: 0.0000003953 seconds\nNumPy 2D:\n  Best run:      0.005042 seconds\n  Time per call: 0.0000005042 seconds\n\nComparison:\nPython 2D is 1.28x faster\n", "type": "stream"}], "id": "bkHC", "outputs": [{"data": {"application/json": "{\"Python 2D\": [\"text/plain+float:0.004037542035803199\", \"text/plain+float:0.004146374994888902\", \"text/plain+float:0.003976707987021655\", \"text/plain+float:0.003953250008635223\", \"text/plain+float:0.0040843749884516\"], \"NumPy 2D\": [\"text/plain+float:0.005247750028502196\", \"text/plain+float:0.0052209169953130186\", \"text/plain+float:0.005388749996200204\", \"text/plain+float:0.005211833049543202\", \"text/plain+float:0.005041958997026086\"]}"}, "type": "data"}]}, {"code_hash": "8791d71270022c2a9be1af970bf5cbe9", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: [[[21, 22, 17], [19, 15, 16]], [[17, 18, 19], [20, 14, 13]]]\nNumPy result:\n [[[21 22 17]\n  [19 15 16]]\n\n [[17 18 19]\n  [20 14 13]]]\n\n              Benchmark Results              \n---------------------------------------------\nPython 3D:\n  Best run:      0.006384 seconds\n  Time per call: 0.0000006384 seconds\nNumPy 3D:\n  Best run:      0.005056 seconds\n  Time per call: 0.0000005056 seconds\n\nComparison:\nNumPy 3D is 1.26x faster\n", "type": "stream"}], "id": "lEQa", "outputs": [{"data": {"application/json": "{\"Python 3D\": [\"text/plain+float:0.006383833009749651\", \"text/plain+float:0.0067798340460285544\", \"text/plain+float:0.00652591697871685\", \"text/plain+float:0.00663749995874241\", \"text/plain+float:0.006567292031832039\"], \"NumPy 3D\": [\"text/plain+float:0.005505790992174298\", \"text/plain+float:0.005106166994664818\", \"text/plain+float:0.00505562499165535\", \"text/plain+float:0.005208291986491531\", \"text/plain+float:0.005219250044319779\"]}"}, "type": "data"}]}, {"code_hash": "1c88c1c36487755ad8ddd1fe75c75676", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: 91\nNumPy result:\n 91\n\n              Benchmark Results              \n---------------------------------------------\nPython 3D:\n  Best run:      0.004083 seconds\n  Time per call: 0.0000004083 seconds\nNumPy 3D:\n  Best run:      0.003779 seconds\n  Time per call: 0.0000003779 seconds\n\nComparison:\nNumPy 3D is 1.08x faster\n", "type": "stream"}], "id": "PKri", "outputs": [{"data": {"application/json": "{\"Python 3D\": [\"text/plain+float:0.004083417006768286\", \"text/plain+float:0.004401334037538618\", \"text/plain+float:0.004373208968900144\", \"text/plain+float:0.004191167012322694\", \"text/plain+float:0.004167124978266656\"], \"NumPy 3D\": [\"text/plain+float:0.003900707990396768\", \"text/plain+float:0.003951083985157311\", \"text/plain+float:0.003984874987509102\", \"text/plain+float:0.004039000021293759\", \"text/plain+float:0.003779207996558398\"]}"}, "type": "data"}]}, {"code_hash": "f54680ae08ffaf423541bdfc24b91dbf", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: 3\nNumPy result:\n 3\n\n              Benchmark Results              \n---------------------------------------------\nPython 3D:\n  Best run:      0.004823 seconds\n  Time per call: 0.0000004823 seconds\nNumPy 3D:\n  Best run:      0.003791 seconds\n  Time per call: 0.0000003791 seconds\n\nComparison:\nNumPy 3D is 1.27x faster\n", "type": "stream"}], "id": "Xref", "outputs": [{"data": {"application/json": "{\"Python 3D\": [\"text/plain+float:0.0048234579735435545\", \"text/plain+float:0.005186374997720122\", \"text/plain+float:0.004946500004734844\", \"text/plain+float:0.0049208750133402646\", \"text/plain+float:0.004864540998823941\"], \"NumPy 3D\": [\"text/plain+float:0.003937291970942169\", \"text/plain+float:0.004210209008306265\", \"text/plain+float:0.003916250017937273\", \"text/plain+float:0.003821459016762674\", \"text/plain+float:0.003791125025600195\"]}"}, "type": "data"}]}, {"code_hash": "b58206d2e41b9dfe0e99f36cde76cccb", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: 12\nNumPy result:\n 12\n\n              Benchmark Results              \n---------------------------------------------\nPython 3D:\n  Best run:      0.004936 seconds\n  Time per call: 0.0000004936 seconds\nNumPy 3D:\n  Best run:      0.003800 seconds\n  Time per call: 0.0000003800 seconds\n\nComparison:\nNumPy 3D is 1.30x faster\n", "type": "stream"}], "id": "SFPL", "outputs": [{"data": {"application/json": "{\"Python 3D\": [\"text/plain+float:0.004936166980769485\", \"text/plain+float:0.005167750001419336\", \"text/plain+float:0.005308207997586578\", \"text/plain+float:0.005030292028095573\", \"text/plain+float:0.005057333968579769\"], \"NumPy 3D\": [\"text/plain+float:0.003936416993383318\", \"text/plain+float:0.0039189590024761856\", \"text/plain+float:0.0040035839774645865\", \"text/plain+float:0.003943457966670394\", \"text/plain+float:0.003800208040047437\"]}"}, "type": "data"}]}, {"code_hash": "62ee90b8c4919583afe6631be8545dde", "console": [{"mimetype": "text/plain", "name": "stdout", "text": "Generic Python result: 7.583333333333333\nNumPy result:\n 7.583333333333333\n\n              Benchmark Results              \n---------------------------------------------\nPython 3D:\n  Best run:      0.004340 seconds\n  Time per call: 0.0000004340 seconds\nNumPy 3D:\n  Best run:      0.017335 seconds\n  Time per call: 0.0000017335 seconds\n\nComparison:\nPython 3D is 3.99x faster\n", "type": "stream"}], "id": "BYtC", "outputs": [{"data": {"application/json": "{\"Python 3D\": [\"text/plain+float:0.004339792008977383\", \"text/plain+float:0.004881625005509704\", \"text/plain+float:0.004581042041536421\", \"text/plain+float:0.0045067499740980566\", \"text/plain+float:0.004435042035765946\"], \"NumPy 3D\": [\"text/plain+float:0.01830391603289172\", \"text/plain+float:0.0176643340382725\", \"text/plain+float:0.017344541964121163\", \"text/plain+float:0.01733529195189476\", \"text/plain+float:0.01734995801234618\"]}"}, "type": "data"}]}], "metadata": {"marimo_version": "0.25.2", "script_metadata_hash": null}, "version": "1"},
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  
+<marimo-code hidden="">
+    import%20marimo%0A%0A__generated_with%20%3D%20%220.25.2%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20timeit%0A%20%20%20%20import%20numpy%20as%20np%0A%0A%20%20%20%20return%20np%2C%20timeit%0A%0A%0A%40app.cell%0Adef%20_(timeit)%3A%0A%20%20%20%20def%20benchmark(%0A%20%20%20%20%20%20%20%20func1%2C%0A%20%20%20%20%20%20%20%20func2%2C%0A%20%20%20%20%20%20%20%20number%3D10_000%2C%0A%20%20%20%20%20%20%20%20repeat%3D5%2C%0A%20%20%20%20%20%20%20%20name1%3D%22Generic%20Python%22%2C%0A%20%20%20%20%20%20%20%20name2%3D%22NumPy%22%2C%0A%20%20%20%20)%3A%0A%20%20%20%20%20%20%20%20times1%20%3D%20timeit.repeat(func1%2C%20number%3Dnumber%2C%20repeat%3Drepeat)%0A%20%20%20%20%20%20%20%20times2%20%3D%20timeit.repeat(func2%2C%20number%3Dnumber%2C%20repeat%3Drepeat)%0A%0A%20%20%20%20%20%20%20%20best1%20%3D%20min(times1)%0A%20%20%20%20%20%20%20%20best2%20%3D%20min(times2)%0A%0A%20%20%20%20%20%20%20%20print(f%22%5Cn%7B'Benchmark%20Results'%3A%5E45%7D%22)%0A%20%20%20%20%20%20%20%20print(%22-%22%20*%2045)%0A%0A%20%20%20%20%20%20%20%20for%20name%2C%20best%20in%20%5B(name1%2C%20best1)%2C%20(name2%2C%20best2)%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(f%22%7Bname%7D%3A%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20print(f%22%20%20Best%20run%3A%20%20%20%20%20%20%7Bbest%3A.6f%7D%20seconds%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20print(f%22%20%20Time%20per%20call%3A%20%7Bbest%20%2F%20number%3A.10f%7D%20seconds%22)%0A%0A%20%20%20%20%20%20%20%20print(%22%5CnComparison%3A%22)%0A%20%20%20%20%20%20%20%20if%20best1%20%3C%20best2%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(f%22%7Bname1%7D%20is%20%7Bbest2%20%2F%20best1%3A.2f%7Dx%20faster%22)%0A%20%20%20%20%20%20%20%20elif%20best2%20%3C%20best1%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(f%22%7Bname2%7D%20is%20%7Bbest1%20%2F%20best2%3A.2f%7Dx%20faster%22)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(%22Both%20have%20equal%20measured%20execution%20times.%22)%0A%0A%20%20%20%20%20%20%20%20return%20%7Bname1%3A%20times1%2C%20name2%3A%20times2%7D%0A%0A%20%20%20%20return%20(benchmark%2C)%0A%0A%0A%40app.cell%0Adef%20_(benchmark%2C%20np)%3A%0A%20%20%20%20%23%20One-dimensional%20array%0A%0A%20%20%20%20arr%20%3D%20%5B10%2C%2020%2C%2030%2C%2040%2C%2050%5D%0A%20%20%20%20np_arr%20%3D%20np.array(arr)%0A%0A%20%20%20%20def%20python_1d()%3A%0A%20%20%20%20%20%20%20%20%5Bx%20%2B%2010%20for%20x%20in%20arr%5D%0A%0A%20%20%20%20def%20numpy_1d()%3A%0A%20%20%20%20%20%20%20%20np_arr%20%2B%2010%0A%0A%20%20%20%20python_1d()%3B%20numpy_1d()%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20%5Bx%20%2B%2010%20for%20x%20in%20arr%5D)%0A%20%20%20%20print(%22NumPy%20result%3A%22%2C%20np_arr%20%2B%2010)%0A%0A%20%20%20%20benchmark(python_1d%2C%20numpy_1d%2C%20name1%3D%22Python%201D%22%2C%20name2%3D%22NumPy%201D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(benchmark%2C%20np)%3A%0A%20%20%20%20%23%20Two-dimensional%20array%0A%0A%20%20%20%20arr_2d%20%3D%20%5B%5B1%2C%202%2C%203%5D%2C%20%5B4%2C%205%2C%206%5D%2C%20%5B7%2C%208%2C%209%5D%5D%0A%20%20%20%20np_arr_2d%20%3D%20np.array(arr_2d)%0A%0A%20%20%20%20def%20python_2d()%3A%0A%20%20%20%20%20%20%20%20%5B%5Bx%20%2B%2010%20for%20x%20in%20row%5D%20for%20row%20in%20arr_2d%5D%0A%0A%20%20%20%20def%20numpy_2d()%3A%0A%20%20%20%20%20%20%20%20np_arr_2d%20%2B%2010%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20%5B%5Bx%20%2B%2010%20for%20x%20in%20row%5D%20for%20row%20in%20arr_2d%5D)%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_2d%20%2B%2010)%0A%0A%20%20%20%20benchmark(python_2d%2C%20numpy_2d%2C%20name1%3D%22Python%202D%22%2C%20name2%3D%22NumPy%202D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(benchmark%2C%20np)%3A%0A%20%20%20%20%23%20Three-dimensional%20array%0A%0A%20%20%20%20arr_3d%20%3D%20%5B%5B%5B11%2C%2012%2C%207%5D%2C%20%5B9%2C%205%2C%206%5D%5D%2C%20%5B%5B7%2C%208%2C%209%5D%2C%20%5B10%2C%204%2C%203%5D%5D%5D%0A%20%20%20%20np_arr_3d%20%3D%20np.array(arr_3d)%0A%0A%20%20%20%20def%20python_3d()%3A%0A%20%20%20%20%20%20%20%20%5B%5B%5Bx%20%2B%2010%20for%20x%20in%20row%5D%20for%20row%20in%20block%5D%20for%20block%20in%20arr_3d%5D%0A%0A%20%20%20%20def%20numpy_3d()%3A%0A%20%20%20%20%20%20%20%20np_arr_3d%20%2B%2010%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20%5B%5B%5Bx%20%2B%2010%20for%20x%20in%20row%5D%20for%20row%20in%20block%5D%20for%20block%20in%20arr_3d%5D)%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_3d%20%2B%2010)%0A%0A%20%20%20%20benchmark(python_3d%2C%20numpy_3d%2C%20name1%3D%22Python%203D%22%2C%20name2%3D%22NumPy%203D%22)%0A%20%20%20%20return%20arr_3d%2C%20np_arr_3d%0A%0A%0A%40app.cell%0Adef%20_(arr_3d%2C%20benchmark%2C%20np_arr_3d)%3A%0A%20%20%20%20%23%20Computing%20sum%0A%0A%20%20%20%20def%20python_3d_sum()%3A%0A%20%20%20%20%20%20%20%20sum(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D)%0A%0A%20%20%20%20def%20numpy_3d_sum()%3A%0A%20%20%20%20%20%20%20%20np_arr_3d.sum()%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20sum(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D))%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_3d.sum())%0A%0A%20%20%20%20benchmark(python_3d_sum%2C%20numpy_3d_sum%2C%20name1%3D%22Python%203D%22%2C%20name2%3D%22NumPy%203D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(arr_3d%2C%20benchmark%2C%20np_arr_3d)%3A%0A%20%20%20%20%23%20Finding%20min%0A%0A%20%20%20%20def%20python_3d_min()%3A%0A%20%20%20%20%20%20%20%20min(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D)%0A%0A%20%20%20%20def%20numpy_3d_min()%3A%0A%20%20%20%20%20%20%20%20np_arr_3d.min()%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20min(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D))%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_3d.min())%0A%0A%20%20%20%20benchmark(python_3d_min%2C%20numpy_3d_min%2C%20name1%3D%22Python%203D%22%2C%20name2%3D%22NumPy%203D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(arr_3d%2C%20benchmark%2C%20np_arr_3d)%3A%0A%20%20%20%20%23%20Finding%20max%0A%0A%20%20%20%20def%20python_3d_max()%3A%0A%20%20%20%20%20%20%20%20max(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D)%0A%0A%20%20%20%20def%20numpy_3d_max()%3A%0A%20%20%20%20%20%20%20%20np_arr_3d.max()%0A%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20max(%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D))%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_3d.max())%0A%0A%20%20%20%20benchmark(python_3d_max%2C%20numpy_3d_max%2C%20name1%3D%22Python%203D%22%2C%20name2%3D%22NumPy%203D%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(arr_3d%2C%20benchmark%2C%20np_arr_3d)%3A%0A%20%20%20%20%23%20Finding%20mean%0A%0A%20%20%20%20def%20python_3d_mean()%3A%0A%20%20%20%20%20%20%20%20numbers%20%3D%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20num%20%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20matrix%20in%20arr_3d%20%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20row%20in%20matrix%20%0A%20%20%20%20%20%20%20%20%20%20%20%20for%20num%20in%20row%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20sum(numbers)%20%2F%20len(numbers)%0A%0A%20%20%20%20def%20numpy_3d_mean()%3A%0A%20%20%20%20%20%20%20%20np_arr_3d.mean()%0A%0A%20%20%20%20numbers%20%3D%20%5Bnum%20for%20matrix%20in%20arr_3d%20for%20row%20in%20matrix%20for%20num%20in%20row%5D%0A%20%20%20%20print(%22Generic%20Python%20result%3A%22%2C%20sum(numbers)%20%2F%20len(numbers))%0A%20%20%20%20print(%22NumPy%20result%3A%5Cn%22%2C%20np_arr_3d.mean())%0A%0A%20%20%20%20benchmark(python_3d_mean%2C%20numpy_3d_mean%2C%20name1%3D%22Python%203D%22%2C%20name2%3D%22NumPy%203D%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A
+</marimo-code>
+
+<marimo-code-hash hidden="">503754c2d14581b7e4c506a708983e2b</marimo-code-hash>
+</body>
+</html>
